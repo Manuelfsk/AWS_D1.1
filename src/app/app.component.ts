@@ -11,10 +11,10 @@ export class AppComponent {
 
   title = 'D1.1-Esfuerzos';
 
-  PSI: number | null = null;; // valor en Psi según la clasificación del electrodo
+  PSI: number | null = null;
   MPA: number | null = null;
   THETA: number | null = null;
-  resultadoFv: number | null = null
+  resultadoFv: number | null = null;
 
 
   // Método para convertir de Psi a Mpa
@@ -29,8 +29,8 @@ export class AppComponent {
     console.log(this.PSI);
     this.CalEsfuerzoFv()
   }
-  
 
+  //Método para calcular Fv
   CalEsfuerzoFv() {
     if (this.MPA === null) {
       console.error('error MPA');
@@ -42,13 +42,13 @@ export class AppComponent {
     }
     const thetaRad = this.THETA * (Math.PI / 180);
     const operacionParentesis = Math.sin(1.5 * thetaRad);
-    this.resultadoFv = 0.30 * this.MPA * (1.0 + 0.5 * operacionParentesis)
+    this.resultadoFv = parseFloat((0.30 * this.MPA * (1.0 + 0.5 * operacionParentesis)).toFixed(4))
+
     console.log('mpa', this.MPA);
-    console.log('fv',this.resultadoFv);
-    console.log('theta',this.THETA);
-    
-    
-    
+    console.log('fv', this.resultadoFv);
+    console.log('theta', this.THETA);
+
+
   }
 
 
