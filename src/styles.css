@@ -18,7 +18,7 @@ body {
     font-family: monospace;
     border-radius: 15px;
     background-color: #1f2937;
-    padding: 20px 12px 0px 12px;
+    padding: 20px 12px 10px 12px;
     margin-left: 30px;
     text-align: justify;
     -webkit-box-shadow: 10px 10px 16px 1px rgba(124, 147, 180, 1);
@@ -42,14 +42,14 @@ h4 {
 
 .unidades-letras {
     color: white;
-    margin: calc(100%-273px);
 }
-.nomenclatura{
+
+.nomenclatura {
     color: white;
 }
-.texto-formula{
+
+.texto-formula {
     color: white;
-    margin: calc(100% -273px);
     padding-top: 67px;
     font-size: x-large;
 }
