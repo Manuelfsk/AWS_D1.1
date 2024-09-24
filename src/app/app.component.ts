@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { map } from 'rxjs';
 export class AppComponent {
 
 
-  title = 'D1.1-Esfuerzos';
+  title = 'WeldDesign';
 
   PSI: number | null = null;
   MPA: number | null = null;
