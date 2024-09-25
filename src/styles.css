@@ -35,7 +35,8 @@ h3 {
     color: white;
 }
 
-h4 {
+h4,
+h5 {
     text-align: center;
     color: rgb(255, 255, 255);
 }
@@ -87,7 +88,7 @@ h4 {
 .parent {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 8px;
 }
 
@@ -129,4 +130,33 @@ h4 {
 
 .div1-unidades {
     margin-left: 13%;
+}
+
+/* footer */
+.parent-footer{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+}
+.grid-footer{
+    grid-column: span 2 / span 2;
+    grid-column-start: 6
+}
+.foot-nombre {
+    width: 350px;
+    color: white;
+    text-align: center;
+    transition: 0.5s ease-in-out;
+    
+}
+
+.foot-nombre:hover {
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: 500;
+    -webkit-box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
+    -moz-box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
+    box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
 }
