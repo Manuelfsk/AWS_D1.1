@@ -3,59 +3,65 @@
     text-align: center;
     font-size: xxx-large;
     font-weight: bolder;
-    color: rgb(255, 255, 255);
-
+    color: rgb(0, 0, 0);
 }
 
 /* body */
 body {
-    background: rgb(0, 0, 0);
-}
-
-/* titulos y texto */
-.texto2 {
-    color: white;
-    font-family: monospace;
-    border-radius: 15px;
-    background-color: #1f2937;
-    padding: 20px 12px 10px 12px;
-    margin-left: 30px;
-    text-align: justify;
-    -webkit-box-shadow: 10px 10px 16px 1px rgba(124, 147, 180, 1);
-    -moz-box-shadow: 10px 10px 16px 1px rgba(124, 147, 180, 1);
-    box-shadow: 5px 8px 10px 1px rgb(176, 207, 250);
+    background: url(assets/bg.jpeg) center bottom/cover no-repeat;
 }
 
 h2 {
-    color: white;
-    text-align: center;
+    font-size: 55px;
 }
 
 h3 {
-    color: white;
-}
-
-h4,
-h5 {
     text-align: center;
-    color: rgb(255, 255, 255);
+    color: black;
 }
 
-.unidades-letras {
+p {
+    text-align: justify;
+    color: black;
+    padding: 7px;
+    font-size: larger;
+}
+
+label {
+    color: black;
+    opacity: 1;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-texto {
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #000000;
+}
+
+.fondo_nav {
+    background: rgb(99, 99, 99);
+    background: radial-gradient(circle, rgba(99, 99, 99, 0.65) 0%, rgba(38, 41, 46, 0.31416316526610644) 100%);
+    padding: 15px 10px 20px 10px;
+    border-radius: 20px;
     color: white;
+    transition: 0.5s ease-in-out;
 }
 
-.nomenclatura {
-    color: white;
+.fondo_nav:hover {
+    -webkit-box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 0.75);
+
 }
 
-.texto-formula {
-    color: white;
-    padding-top: 67px;
-    font-size: x-large;
-}
 
-/* botones */
+/* botones calcular */
 .boton {
     font-size: 13px;
     padding: 10px 15px;
@@ -84,79 +90,83 @@ h5 {
     color: rgb(4, 4, 38);
 }
 
-/* grid  */
-.parent {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
-}
-
-.div1 {
-    grid-column: span 10 / span 10;
-    grid-column-start: 2;
-
-}
-
-.div2 {
-    grid-column: span 10 / span 10;
-    grid-column-start: 2;
-    grid-row-start: 2;
-}
-
-.div3 {
-    grid-column: span 10 / span 10;
-    grid-column-start: 2;
-    grid-row-start: 3;
-}
-
-.div4 {
-    grid-column: span 10 / span 10;
-    grid-column-start: 2;
-    grid-row-start: 4;
-}
-
-.div5 {
-    grid-column: span 5 / span 5;
-    grid-column-start: 2;
-    grid-row-start: 5;
-}
-
-/* tablas */
-/* grid tablas unidades */
-.parent-unidades {
-    margin-left: 33%;
-}
-
-.div1-unidades {
-    margin-left: 13%;
-}
-
 /* footer */
-.parent-footer{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 8px;
-}
-.grid-footer{
-    grid-column: span 2 / span 2;
-    grid-column-start: 6
-}
-.foot-nombre {
-    width: 350px;
-    color: white;
-    text-align: center;
-    transition: 0.5s ease-in-out;
-    
+.center_footer {
+    animation: footer 8s ease-in-out 10s infinite;
 }
 
-.foot-nombre:hover {
-    padding: 5px;
-    border-radius: 10px;
-    margin-left: 10px;
-    font-weight: 500;
-    -webkit-box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
-    -moz-box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
-    box-shadow: 5px 5px 12px -9px rgba(199,224,252,1);
+@keyframes footer {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+.footer_2 {
+    font-size: 20px;
+    transition: 0.5s ease-in;
+}
+
+.footer_2:hover {
+    font-weight: 700;
+    color: #fcfcfc;
+    text-shadow: 0px 0px 10px rgb(50, 95, 95),
+        0px 0px 20px rgb(50, 95, 95),
+        0px 0px 30px rgb(50, 95, 95),
+        0px 0px 40px rgb(50, 95, 95),
+        0px 0px 50px rgb(50, 95, 95),
+        0px 0px 10px rgb(50, 95, 95);
+}
+
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media(width > 600px) {
+    section {
+        align-items: center;
+        padding-left: 0;
+        gap: 20px;
+    }
 }

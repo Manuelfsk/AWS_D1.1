@@ -3,183 +3,379 @@
   <hr>
 </header>
 
-<div class="parent">
-  <div class="div1">
-    <p class="texto2">La norma AWS D1.1 es una de las guías más importantes para la soldadura estructural, y establece
-      los requisitos y criterios necesarios para asegurar la integridad de las uniones soldadas en estructuras de acero. Dentro de este
-      marco normativo, el cálculo preciso de los esfuerzos y los requisitos específicos para el diseño de conexiones no
-      tubulares adquiere una relevancia crítica. Las conexiones no tubulares son comunes en diversas aplicaciones
-      industriales, como la construcción de edificios, puentes y otras infraestructuras, y su diseño adecuado es
-      esencial para garantizar la seguridad y el rendimiento a largo plazo de las estructuras.</p>
-    <h2>Requisitos especificos para el diseño de conexiones no tubulares (cargadas Éstatica o Ciclicamente)</h2>
-    <h2></h2>
-  </div>
 
-  <div class="div2">
+<h2 class="container">AWS D1.1 : 2020</h2>
+<h3>Requisitos específicos para el diseño de conexiones no tubulares
+  (cargadas estática o cíclicamente)</h3>
+<div class="container fondo_nav mt-4">
+  <ul class="nav nav-tabs nav-pills nav-fill">
+    <li class="nav-item ">
+      <a class="nav-link active" data-bs-toggle="tab" href="#_Fv"><b>Esfuerzos admisible alternativo [Fv]</b></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#_pRho">Rho Relación de deformación [ρ Rho] </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#F_vi">Centro de rotación instantáneo</a>
+    </li>
+  </ul>
 
-    <h4>Esfuerzos admisibles alternativo de soldaduras en filete </h4>
+  <div class="tab-content mt-3">
+    <!-- Tab de Esfuerzos admisible alternativo -->
+    <div class="tab-pane fade show active" id="_Fv">
+      <h3>Esfuerzos admisibles alternativo de soldaduras en filete</h3>
+      <p>Un elemento clave dentro del diseño de conexiones no tubulares es la determinación de los esfuerzos admisibles
+        alternativos en las soldaduras en filete. Estos esfuerzos representan los valores máximos que una soldadura
+        puede soportar bajo diferentes condiciones de carga, sin comprometer la integridad estructural. La norma AWS
+        D1.1 proporciona fórmulas y criterios específicos para calcular estos esfuerzos, considerando factores como el
+        tipo de electrodo utilizado, el ángulo de la fuerza aplicada sobre la soldadura, y las características
+        geométricas de la conexión. Uno de los principales objetivos al calcular estos esfuerzos es asegurar que las
+        soldaduras no solo puedan soportar las cargas aplicadas, sino que lo hagan dentro de un margen de seguridad
+        adecuado, en base a la siguiente formula Fv = 0.30 Fexx (1.0 + 0.50 sin^1.5 Θ)</p>
 
-    <p class="texto2">Un elemento clave dentro del diseño de conexiones no tubulares es la determinación de los
-      esfuerzos admisibles
-      alternativos en las soldaduras en filete. Estos esfuerzos representan los valores máximos que una soldadura puede
-      soportar bajo diferentes condiciones de carga, sin comprometer la integridad estructural. La norma AWS D1.1
-      proporciona fórmulas y criterios específicos para calcular estos esfuerzos, considerando factores como el tipo de
-      electrodo utilizado, el ángulo de la fuerza aplicada sobre la soldadura, y las características geométricas de la
-      conexión. Uno de los principales objetivos al calcular estos esfuerzos es asegurar que las soldaduras no solo
-      puedan soportar las cargas aplicadas, sino que lo hagan dentro de un margen de seguridad adecuado.</p>
-  </div>
-
-  <!-- Cambio Unidades -->
-  <div class="div3 fondoTablas">
-    <div class="container">
-      <div class="row">
-        <div>
-          <div class="parent-unidades">
-            <form #miform="ngForm" class="row g-3  ">
-              <h3 class="div1-unidades"><b>Conversor Unidades</b></h3>
-              <div class="col-auto unidades-letras">
-                <label for="psi1" class="marco-label1 "><b>Psi a Mpa</b> </label>
+      <div class="center">
+        <form #miform="ngForm" class="row g-3  ">
+          <h3 class="div1-unidades"><b>Conversor Unidades</b></h3>
+          <div class="col-auto unidades-letras">
+            <label for="psi1">
+              <P><b>Psi a Mpa</b></P>
+            </label>
+          </div>
+          <div class="col-auto ">
+            <input type="text" class="form-control " [(ngModel)]="PSI" name="psi1" ngModel #psi1="ngModel" #_psi1
+              required filtrarNumeros minlength="5" placeholder="Ingrese el valor en Psi">
+            <div *ngIf="psi1.invalid &&(psi1.dirty || psi1.touched)" class="my-2  alert alert-danger">
+              <div *ngIf="psi1.errors?.['required']">
+                <b>Campo Psi requerido</b>
               </div>
-              <div class="col-auto ">
-                <input type="text" class="form-control " [(ngModel)]="PSI" name="psi1" ngModel #psi1="ngModel" #_psi1
-                  required filtrarNumeros minlength="5" placeholder="Ingrese el valor en Psi">
-                <div *ngIf="psi1.invalid &&(psi1.dirty || psi1.touched)" class="my-1 mx-2 alert alert-danger">
-                  <div *ngIf="psi1.errors?.['required']">
-                    <b>Campo Psi requerido</b>
+              <div [hidden]="!psi1.errors?.['minlength']">
+                <b>Mínimo 5 caracteres .</b>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="boton" (click)="ConvertirPsiaMpa()" [disabled]="!miform.form.valid"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop">Convertir a
+              MPa</button>
+            <!-- Modal -->
+            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog ">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div [hidden]="!psi1.errors?.['minlength']">
-                    <b>Debe tener 5 caracteres mínimo.</b>
+                  <div class="modal-body">
+                    <p class="resultado-und"><b>{{psi1.value}}</b> psi es igual a: <b>{{MPA}}</b> Mpa.</p>
+                    <p> La respuesta del valor Mpa, será asignada a la <b>clasificación del esfuerzo del electrodo
+                        (Fexx)</b>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
                   </div>
                 </div>
               </div>
-              <div class="col-auto">
-                <button type="submit" class=" boton" (click)="ConvertirPsiaMpa()" [disabled]="!miform.form.valid"
-                  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Convertir a
-                  MPa</button>
-                <!-- Modal -->
-                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog ">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <p class="resultado-und"><b>{{psi1.value}}</b> psi es igual a: <b>{{MPA}}</b> Mpa.</p>
-                        <p> La respuesta del valor Mpa, será asignada a la <b>clasificación del esfuerzo del electrodo
-                            (Fexx)</b>
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                      </div>
+            </div>
+            <!-- fin modal -->
+          </div>
+        </form>
+      </div>
+      <br> <br>
+      <div class="container ">
+        <h3><b>Tabla para el calculo del Esfuerzos admisibles alternativo de soldaduras en filete</b></h3><br>
+
+        <form #miforma="ngForm" class="row g-3 needs-validation" novalidate>
+          <div class="col-md-3 form-floating ">
+            <input type="text" placeholder="Mpa" name="fexx_tex" [(ngModel)]="MPA" ngModel #fexx_tex="ngModel"
+              #_fexx_tex required filtrarNumeros class="form-control">
+            <label for="fexx_tex">Fexx [Mpa]</label>
+            <div *ngIf="fexx_tex.invalid &&(fexx_tex.dirty || fexx_tex.touched)">
+              <div *ngIf="fexx_tex.errors?.['required']" class="alert alert-danger my-1">
+                <b>Campo Mpa obligatorio</b>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 form-floating ">
+            <input type="text" placeholder="Valor ángulo Θ en grados" [(ngModel)]="THETA" name="theta" ngModel
+              #theta="ngModel" #_theta required filtrarNumeros maxlength="2" class="form-control">
+            <label for="theta">Θ Theta</label>
+            <div *ngIf="theta.invalid &&(theta.touched)">
+              <div *ngIf="theta.errors?.['required']" class="my-1 alert alert-danger">
+                <b>Campo ángulo <b>theta</b> es obligatorio</b>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 form-floating ">
+            <input class="form-control" value="{{resultadoFv}}" disabled>
+            <label for="floatingInput">Fv [Mpa]</label>
+          </div>
+          <div class="col-md-3 form-floating ">
+            <div class="col-auto">
+              <!-- modal btn  -->
+              <button *ngIf="MPA && THETA" class="boton" (click)="CalEsfuerzoFv()" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop_formula">Calcular Fv</button>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop_formula" data-bs-backdrop="static" data-bs-keyboard="false"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
+                      <button type="button" class=" boton" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="resultado-und"> El <b>Esfuerzo admisible de corte</b> para un electrodo de
+                        {{PSI}} Mpa, seria de : {{resultadoFv}} Mpa</p>
+                      <p>El <b>ángulo Theta </b> será asignado en la sección Rho <b>Relación de deformación [ρ Rho]</b>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
                     </div>
                   </div>
                 </div>
-                <!-- fin modal -->
               </div>
-            </form>
-            <div class="texto-formula">
-              <p>Fv = 0.30 Fexx (1.0 + 0.50 sin^1.5 Θ)</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Tab de Rho -->
+    <div class="tab-pane fade" id="_pRho">
+      <h3>ρ = Δi/Δm relación de la deformación del elemento “i” a la deformación en un elemento a máximo esfuerzo</h3>
+      <!-- convertir in a mm -->
+      <div class="center">
+        <form #miformInche="ngForm" class="row g-3  ">
+          <h3><b>Conversor Unidades</b></h3>
+          <div class="col-auto">
+            <label for="inches" class="marco-label1 "><b>In a mm</b> </label>
+          </div>
+          <div class="col-auto ">
+            <input type="text" class="form-control " [(ngModel)]="wPie" name="inches" ngModel #inches="ngModel" #_inches
+              filtrarNumeros required placeholder="Ingrese el valor en Pulgadas">
+            <div *ngIf="inches.invalid &&(inches.dirty || inches.touched)" class="my-1 mx-2 alert alert-danger">
+              <div *ngIf="inches.errors?.['required']">
+                <b>Campo Pulgada requerido</b>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="boton" (click)="ConverIncheamili()" [disabled]="!miformInche.form.valid"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop-inches">Convertir mm</button>
+            <!-- Modal -->
+            <div class="modal fade " id="staticBackdrop-inches" data-bs-backdrop="static" data-bs-keyboard="false"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog ">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="resultado-und"><b>{{inches.value}}</b> pulgadas es igual a: <b>{{mili}}</b> mm.
+                    </p>
+                    <p> La respuesta se asignará a <b>W</b> (mm)</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br> <br>
+      <!-- tabla F(rho) -->
+      <div class="container">
+        <div>
+          <form #RHO="ngForm" class="row g-3 needs-validation">
+            <div class="col-md-4">
+              <label class="form-label form-texto">W (tamaño de la pierna de la soldadura en filete
+                )</label>
+              <input type="text" class="form-control mx-1 my-1" value="{{mili}}" [(ngModel)]="mili" ngModel
+                #W_pie="ngModel" placeholder="Pie en mm" name="W_pie" filtrarNumeros #_W_pie required>
+              <div *ngIf="W_pie.invalid &&(W_pie.dirty || W_pie.touched)">
+                <div *ngIf="W_pie.errors?.['required']" class="alert alert-danger">
+                  <b>Campo W obligatorio</b>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form-texto ">Δm (Deformación elemento a máximo esfuerzo)</label>
+              <input type="text" class="form-control" value="{{resmDelta}}" placeholder="Elemento a máximo esfuerzo"
+                disabled>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form-texto ">Δu (Deformación elemento sometido al esfuerzo máximo)</label>
+              <input type="text" class="form-control" value="{{resUDelta}}"
+                placeholder="Elemento sometido al esfuerzo máximo" disabled>
+            </div>
+            <div class="col-md-4 ">
+              <label class="form-label form-texto  ">Ri</label>
+              <input type="text" class="form-control mx-1 my-1" value="{{Ri}}" [(ngModel)]="Ri" name="R_i" ngModel
+                #R_i="ngModel" placeholder="Valor Ri" filtrarNumeros #_R_i required>
+              <div *ngIf="R_i.invalid &&(R_i.dirty || R_i.touched)">
+                <div *ngIf="R_i.errors?.['required']" class="alert alert-danger">
+                  <b>Campo Ri obligatorio</b>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form-texto ">Rcrit (Distancia CRI al elemento soldadura proporción
+                mín.)</label>
+              <input type="text" class="form-control" value="{{resulRcrit}}"
+                placeholder="Distancia del centro de rotación instantáneo" disabled>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form-texto ">Δi (Deformación elementos a niveles intermedios
+                esfuerzo)</label>
+              <input type="text" class="form-control" value="{{resulIDelta}}"
+                placeholder="Deformación niveles intermedio esfuerzo" disabled>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form-texto "> Θ Theta </label>
+              <input type="text" class="form-control" value="{{THETA}}" placeholder="Ángulo Theta" disabled>
+            </div>
+            <div class="col-12">
+              <!-- modal deformacion rho
+            -->
+              <button *ngIf="mili && Ri && THETA" class="boton" (click)="deformacionRHO()" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop_rho" type="submit">Calcular ρ</button>
+              <!-- modal rho -->
+              <div class="modal fade" id="staticBackdrop_rho" data-bs-backdrop="static" data-bs-keyboard="false"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="resultado-und"> La <b>relación de la deformación del elemento “i”</b> a la deformación
+                        en un elemento a máximo esfuerzo es: <b>{{RhoResultado}}</b></p>
+                      <p>Esta respuesta será asignada al campo <b>ρ (Rho)</b> </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+    <!-- Tab de Centro de rotación instantáneo -->
+    <div class="tab-pane fade" id="F_vi">
+      <h3>Centro de rotación instantáneo</h3>
+      <p>La norma AWS D1.1 establece requisitos y directrices para la calidad y seguridad de las estructuras soldadas en
+        diversas industrias. Dentro de esta norma, el concepto de Centro de Rotación Instantáneo (CRI) es clave para el
+        análisis de grupos de soldaduras sometidos a cargas complejas, como en estructuras con soldaduras en filete.
+        Este enfoque permite evaluar cómo la deformación y los esfuerzos se distribuyen en un conjunto de soldaduras que
+        trabajan de manera no lineal bajo diferentes ángulos de carga, se deteerminan por: Fvx = Σ Fvix; Fvy = Σ Fviy;
+        Fvi = 0.30 FEXX (1.0 + 0.50 sin1.5 Θ) F(ρ); F(ρ) = [ρ (1.9 – 0.9ρ)]0.3</p>
+      <!-- tabla para Fvi -->
+      <div class="div4 fondoTablas">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col col-sm-12 col-md-12 col-lg-12">
+              <h3>Tabla para el cálculo compatibilidad de deformación y el comportamiento de deformación, carga no
+                lineal de soldaduras cargadas en ángulo variable </h3>
+              <!-- tabla fvi  -->
+              <form #miforma="ngForm" class="row g-3 needs-validation">
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Fexx [Mpa] </label>
+                  <input type="text" class="form-control" value="{{MPA}}"
+                    placeholder=" Clasificación esfuerzo del electrodo [Mpa]" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Θ Theta </label>
+                  <input type="text" class="form-control" value="{{THETA}}" placeholder="Ángulo Theta" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> ρ (Rho) </label>
+                  <input type="text" class="form-control" value="{{RhoResultado}}"
+                    placeholder="Δi/Δm relación deformación del elemento" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Factor F(ρ) </label>
+                  <input type="text" class="form-control" value="{{frho}}"
+                    placeholder="factor corrección en base a relación de deformación ρ " disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Fvi (Mpa)</label>
+                  <input type="text" class="form-control" value="{{Fvi}}"
+                    placeholder="Esfuerzo admisible para una soldadura individual" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Componente Fvix (Mpa)</label>
+                  <input type="text" class="form-control" value="{{comp_Fvix}}"
+                    placeholder="Componente x de esfuerzo Fvi" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Componente Fviy (Mpa)</label>
+                  <input type="text" class="form-control" value="{{comp_Fviy}}"
+                    placeholder="Componente y de esfuerzo Fvi" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Fvx (Mpa) </label>
+                  <input type="text" class="form-control" value="{{Fvx}}"
+                    placeholder="Fuerza total interna en dirección x" disabled>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label form-text"> Fvy (Mpa)</label>
+                  <input type="text" class="form-control" value="{{Fvy}}"
+                    placeholder="Fuerza total interna en dirección y" disabled>
+                </div>
+                <div class="col-12">
+                  <button class="boton" (click)="calcularFvi()" type="submit">Calcular</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
+        <br><br><br>
       </div>
-    </div>
-  </div>
-
-  <!-- tabla aplicacion formula -->
-
-  <div class="div4 fondoTablas">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col col-sm-12 col-md-12 col-lg-12">
-          <h3>Tabla para el cálculo del Esfuerzo admisible de corte [Fv] </h3>
-          <form #miforma="ngForm">
-            <table class="table table-light border border-primary ">
-              <thead>
-                <tr>
-                  <th scope="col ">Fexx [Mpa]</th>
-                  <th scope="col">Θ</th>
-                  <th acope="col">Fv [Mpa]</th>
-                  <th scope="col">Calcular Fv</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td> <input type="text" placeholder="Mpa" name="fexx_tex" [(ngModel)]="MPA" ngModel
-                      #fexx_tex="ngModel" #_fexx_tex required filtrarNumeros>
-                    <div *ngIf="fexx_tex.valid &&(fexx_tex.dirty || fexx_tex.touched)">
-                      <div *ngIf="fexx_tex.errors?.['required']" class="alert alert-danger">
-                        <b>Campo Mpa obligatorio</b>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" placeholder="Valor ángulo Θ en grados" [(ngModel)]="THETA" name="theta" ngModel
-                      #theta="ngModel" #_theta required filtrarNumeros maxlength="3">
-                    <div *ngIf="theta.invalid &&(theta.touched)">
-                      <div *ngIf="theta.errors?.['required']" class="my-1 alert alert-danger">
-                        <b>Campo ángulo <b>theta</b> es obligatorio</b>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {{resultadoFv}}
-                  </td>
-                  <td>
-                    <div class="col-auto">
-                      <!-- modal btn  -->
-                      <button *ngIf="MPA && THETA" class=" boton" (click)="CalEsfuerzoFv()" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop_formula">Calcular Fv</button>
-                      <!-- Modal -->
-                      <div class="modal fade" id="staticBackdrop_formula" data-bs-backdrop="static"
-                        data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Respuesta es:</h1>
-                              <button type="button" class=" boton" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <p class="resultado-und"> El <b>Esfuerzo admisible de corte</b> para un electrodo de
-                                {{PSI}}
-                                Mpa, seria de : {{resultadoFv}} Mpa</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="nomenclatura">
-      <b>Fexx: </b> Clasificación del esfuerzo del electrodo [Mpa]<br>
-      <b>Theta: </b> Ángulo entre la dirección de la fuerza y el eje de soldadura<br>
-      <b>Fv: </b> Esfuerzo admisible de la unidad<br>
     </div>
 
   </div>
 </div>
+<br>
 
-<br> <br>
-<footer>
-<div class="parent-footer">
-  <div class=" grid-footer">
-    <h5>Diseñado</h5>
-    <div class="foot-nombre"><b>Mg. Lic.</b> Manuel Fernando Fonseca Ávila</div>
-    <br><br>
-  </div >
-</div>
 
+<footer class="center_footer">
+  <section>
+    <ul class="links">
+      <li>
+        <h5>Contáctenos</h5>
+      </li>
+    </ul>
+    <ul >
+      <li><a href="www.linkedin.com/in/manuel-fonseca-fullstack-developer" ><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+            <path d="M8 11l0 5" />
+            <path d="M8 8l0 .01" />
+            <path d="M12 16l0 -5" />
+            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+          </svg></a></li>
+      <li><a href="https://t.me/Manuel_Fernando" class=" fs-telegram"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-telegram" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+          </svg></a></li>
+    </ul>
+
+    <p class="footer_2">2024 <b>Mg. Lic.</b> Manuel Fernando Fonseca Ávila</p>
+  </section>
 </footer>
+
+
