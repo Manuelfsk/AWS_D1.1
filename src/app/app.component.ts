@@ -57,12 +57,14 @@ export class AppComponent {
       return;
     }
     const thetaRad = this.THETA * (Math.PI / 180);
-    const operacionParentesis = Math.sin(1.5 * thetaRad);
+    const operacionParentesis = Math.pow(Math.sin(thetaRad), 1.5);
     this.resultadoFv = parseFloat((0.30 * this.MPA * (1.0 + 0.5 * operacionParentesis)).toFixed(4))
 
     console.log('mpa', this.MPA);
     console.log('fv', this.resultadoFv);
     console.log('theta', this.THETA);
+    console.log(Math.sin(1.5 * thetaRad), '--operacion seno^1.5(theta)');
+    
   }
   ///////////////////////////////////////////////
   // convertir pulgada a milimetro

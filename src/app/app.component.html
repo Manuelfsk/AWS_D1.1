@@ -13,10 +13,10 @@
       <a class="nav-link active" data-bs-toggle="tab" href="#_Fv"><b>Esfuerzos admisible alternativo [Fv]</b></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#_pRho">Rho Relación de deformación [ρ Rho] </a>
+      <a class="nav-link" data-bs-toggle="tab" href="#_pRho"><b>Rho Relación de deformación [ρ Rho]</b> </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#F_vi">Centro de rotación instantáneo</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#F_vi"><b>Centro de rotación instantáneo</b></a>
     </li>
   </ul>
 
@@ -193,8 +193,7 @@
         <div>
           <form #RHO="ngForm" class="row g-3 needs-validation">
             <div class="col-md-4">
-              <label class="form-label form-texto">W (tamaño de la pierna de la soldadura en filete
-                )</label>
+              <label class="form-label form-texto"><b>W (tamaño de la pierna de la soldadura en filete)</b></label>
               <input type="text" class="form-control mx-1 my-1" value="{{mili}}" [(ngModel)]="mili" ngModel
                 #W_pie="ngModel" placeholder="Pie en mm" name="W_pie" filtrarNumeros #_W_pie required>
               <div *ngIf="W_pie.invalid &&(W_pie.dirty || W_pie.touched)">
@@ -204,17 +203,17 @@
               </div>
             </div>
             <div class="col-md-4">
-              <label class="form-label form-texto ">Δm (Deformación elemento a máximo esfuerzo)</label>
-              <input type="text" class="form-control" value="{{resmDelta}}" placeholder="Elemento a máximo esfuerzo"
+              <label class="form-label form-texto "><b>Δm</b></label>
+              <input type="text" class="form-control" value="{{resmDelta}}" placeholder="Deformación elemento a máximo esfuerzo"
                 disabled>
             </div>
             <div class="col-md-4">
-              <label class="form-label form-texto ">Δu (Deformación elemento sometido al esfuerzo máximo)</label>
+              <label class="form-label form-texto "><b>Δu</b></label>
               <input type="text" class="form-control" value="{{resUDelta}}"
-                placeholder="Elemento sometido al esfuerzo máximo" disabled>
+                placeholder="Def. elem. sometido al esfuerzo máximo" disabled>
             </div>
             <div class="col-md-4 ">
-              <label class="form-label form-texto  ">Ri</label>
+              <label class="form-label form-texto  "><b>Ri</b></label>
               <input type="text" class="form-control mx-1 my-1" value="{{Ri}}" [(ngModel)]="Ri" name="R_i" ngModel
                 #R_i="ngModel" placeholder="Valor Ri" filtrarNumeros #_R_i required>
               <div *ngIf="R_i.invalid &&(R_i.dirty || R_i.touched)">
@@ -224,19 +223,18 @@
               </div>
             </div>
             <div class="col-md-4">
-              <label class="form-label form-texto ">Rcrit (Distancia CRI al elemento soldadura proporción
-                mín.)</label>
+              <label class="form-label form-texto "><b>
+                Rcrit</b></label>
               <input type="text" class="form-control" value="{{resulRcrit}}"
                 placeholder="Distancia del centro de rotación instantáneo" disabled>
             </div>
             <div class="col-md-4">
-              <label class="form-label form-texto ">Δi (Deformación elementos a niveles intermedios
-                esfuerzo)</label>
+              <label class="form-label form-texto "><b>Δi</b></label>
               <input type="text" class="form-control" value="{{resulIDelta}}"
-                placeholder="Deformación niveles intermedio esfuerzo" disabled>
+                placeholder="Def. niveles intermedio esfuerzo" disabled>
             </div>
             <div class="col-md-4">
-              <label class="form-label form-texto "> Θ Theta </label>
+              <label class="form-label form-texto "> <b>Θ Theta</b> </label>
               <input type="text" class="form-control" value="{{THETA}}" placeholder="Ángulo Theta" disabled>
             </div>
             <div class="col-12">
@@ -289,46 +287,46 @@
               <!-- tabla fvi  -->
               <form #miforma="ngForm" class="row g-3 needs-validation">
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Fexx [Mpa] </label>
+                  <label class="form-label form-texto"> <b>Fexx [Mpa]</b></label>
                   <input type="text" class="form-control" value="{{MPA}}"
                     placeholder=" Clasificación esfuerzo del electrodo [Mpa]" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Θ Theta </label>
+                  <label class="form-label form-texto"> <b>Θ Theta</b> </label>
                   <input type="text" class="form-control" value="{{THETA}}" placeholder="Ángulo Theta" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> ρ (Rho) </label>
+                  <label class="form-label form-texto"> <b>ρ (Rho)</b> </label>
                   <input type="text" class="form-control" value="{{RhoResultado}}"
                     placeholder="Δi/Δm relación deformación del elemento" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Factor F(ρ) </label>
+                  <label class="form-label form-texto"> <b>Factor F(ρ)</b> </label>
                   <input type="text" class="form-control" value="{{frho}}"
                     placeholder="factor corrección en base a relación de deformación ρ " disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Fvi (Mpa)</label>
+                  <label class="form-label form-texto"> <b>Fvi (Mpa)</b></label>
                   <input type="text" class="form-control" value="{{Fvi}}"
                     placeholder="Esfuerzo admisible para una soldadura individual" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Componente Fvix (Mpa)</label>
+                  <label class="form-label form-texto"> <b>Componente Fvix (Mpa)</b></label>
                   <input type="text" class="form-control" value="{{comp_Fvix}}"
                     placeholder="Componente x de esfuerzo Fvi" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Componente Fviy (Mpa)</label>
+                  <label class="form-label form-texto"> <b>Componente Fviy (Mpa)</b></label>
                   <input type="text" class="form-control" value="{{comp_Fviy}}"
                     placeholder="Componente y de esfuerzo Fvi" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Fvx (Mpa) </label>
+                  <label class="form-label form-texto"> <b>Fvx (Mpa)</b> </label>
                   <input type="text" class="form-control" value="{{Fvx}}"
                     placeholder="Fuerza total interna en dirección x" disabled>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label form-text"> Fvy (Mpa)</label>
+                  <label class="form-label form-texto"> <b>Fvy (Mpa)</b></label>
                   <input type="text" class="form-control" value="{{Fvy}}"
                     placeholder="Fuerza total interna en dirección y" disabled>
                 </div>
@@ -356,7 +354,7 @@
       </li>
     </ul>
     <ul >
-      <li><a href="www.linkedin.com/in/manuel-fonseca-fullstack-developer" ><svg xmlns="http://www.w3.org/2000/svg"
+      <li><a href="https://www.linkedin.com/in/manuel-fonseca-fullstack-developer/" ><svg xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24"
             stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -374,7 +372,7 @@
           </svg></a></li>
     </ul>
 
-    <p class="footer_2">2024 <b>Mg. Lic.</b> Manuel Fernando Fonseca Ávila</p>
+    <p class="footer_2">2024 <b>Mg. en E-learning Lic. Manuel Fernando Fonseca Ávila</b></p>
   </section>
 </footer>
 
